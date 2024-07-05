@@ -1,11 +1,11 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
+from crewai_tools import SerperDevTool
 from crewai_tools.tools.file_read_tool.file_read_tool import FileReadTool
 from langchain_openai import ChatOpenAI
-from crewai_tools import SerperDevTool
-
 
 from src.tools.pdf_read_tools import get_pdf_content
+
 
 @CrewBase
 class JobsHuntingCrew:
@@ -23,19 +23,18 @@ class JobsHuntingCrew:
         return Agent(
             config=self.agents_config["professional_headhunter"],
             llm=self.llm,
-            tools=[get_pdf_content,self.file_reading_tool]
         )
 
     @agent
-    def personal_career_coach(self)-> Agent:
+    def personal_career_coach(self) -> Agent:
         return Agent(
             config=self.agents_config["personal_career_coach"],
             llm=self.llm,
-            tools=[self.search_tool]
+
         )
 
     @agent
-    def cover_letter_writer(self)-> Agent:
+    def cover_letter_writer(self) -> Agent:
         return Agent(
             config=self.agents_config["cover_letter_writer"],
             llm=self.llm
@@ -45,21 +44,24 @@ class JobsHuntingCrew:
     def analyze_resume(self) -> Task:
         return Task(
             config=self.tasks_config["analyze_resume_task"],
-            agent=self.professional_headhunter()
+            agent=self.professional_headhunter(),
+            tools=[get_pdf_content]
         )
 
     @task
     def analyze_job_requirements(self) -> Task:
         return Task(
             config=self.tasks_config["analyze_job_requirements_task"],
-            agent=self.professional_headhunter()
+            agent=self.professional_headhunter(),
+            tools=[self.file_reading_tool]
         )
 
     @task
     def compare_resume_and_job_requirements(self) -> Task:
         return Task(
             config=self.tasks_config["compare_resume_and_job_requirements_task"],
-            agent=self.professional_headhunter()
+            agent=self.professional_headhunter(),
+
         )
 
     @task
@@ -67,6 +69,7 @@ class JobsHuntingCrew:
         return Task(
             config=self.tasks_config["future_recommendations_task"],
             agent=self.personal_career_coach(),
+            tools=[self.search_tool,self.file_reading_tool,get_pdf_content]
 
         )
 

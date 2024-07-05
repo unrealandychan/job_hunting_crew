@@ -14,13 +14,14 @@ analyze_job_requirements_task:
 
 compare_resume_and_job_requirements_task:
     description: >
-        Compare the candidate's resume from {resume_path} and the job description under {job_description_path}. Provide insights on the match between the candidate's skills and the job requirements.
+        Compare the candidate's resume from {resume_path} and the job description from {job_description_path}, provide insights on the match between the candidate's skills and the job requirements.
     expected_output: >
         An evaluation of how well the candidate's skills and experience match the job requirements. Provide recommendations on how to improve the match between the candidate's resume and the job requirements. At the end of the result, please also list the appreciate number of keywords regarding the job requirement in bullet points, and the number of keywords that the candidate has in their resume. Give some tips for the job application and interview process for example how to highlight the skills and experience that match the job requirements.
+    
 
 future_recommendations_task:
     description: >
-        Based on the analysis of the candidate's resume and the job requirements, provide recommendations on how the candidate can improve their resume to better match the job requirements. You can recommend specific areas for improvement and suggest ways to highlight key skills and experience or any certifications that the candidate can obtain to enhance their resume.
+        Based on the analysis of the resume and the job description above, provide recommendations on how the candidate can improve their resume to better match the job requirements. You can recommend specific areas for improvement and suggest ways to highlight key skills and experience or any certifications that the candidate can obtain to enhance their resume.
     expected_output: >
         Specific recommendations on how the candidate can enhance their resume to better align with the job requirements. Provide guidance on areas for improvement and suggestions for highlighting key skills and experience. Recommend any certifications or training programs that the candidate can pursue to enhance their qualifications with link attached.
 
