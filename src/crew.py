@@ -61,7 +61,7 @@ class JobsHuntingCrew:
         return Task(
             config=self.tasks_config["compare_resume_and_job_requirements_task"],
             agent=self.professional_headhunter(),
-
+            tools=[self.search_tool, self.file_reading_tool, get_pdf_content]
         )
 
     @task
@@ -73,12 +73,12 @@ class JobsHuntingCrew:
 
         )
 
-    @task
-    def generate_cover_letter(self) -> Task:
-        return Task(
-            config=self.tasks_config["generate_cover_letter_task"],
-            agent=self.cover_letter_writer()
-        )
+    # @task
+    # def generate_cover_letter(self) -> Task:
+    #     return Task(
+    #         config=self.tasks_config["generate_cover_letter_task"],
+    #         agent=self.cover_letter_writer()
+    #     )
 
     @crew
     def crew(self) -> Crew:
