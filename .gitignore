@@ -3,3 +3,4 @@
 /output/**
 /input/*.pdf
 /input/*.txt
+.DS_Store
