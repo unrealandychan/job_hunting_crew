@@ -13,7 +13,7 @@ class JobsHuntingCrew:
     tasks_config = 'config/tasks.yaml'
 
     def __init__(self, options):
-        self.llm = ChatOpenAI(model_name="gpt-4o", temperature=0)
+        self.llm = ChatOpenAI(model_name="gpt-4", temperature=0)
         self.search_tool = SerperDevTool()
         self.file_reading_tool = FileReadTool()
         self.options = options
@@ -73,12 +73,12 @@ class JobsHuntingCrew:
 
         )
 
-    # @task
-    # def generate_cover_letter(self) -> Task:
-    #     return Task(
-    #         config=self.tasks_config["generate_cover_letter_task"],
-    #         agent=self.cover_letter_writer()
-    #     )
+    @task
+    def generate_cover_letter(self) -> Task:
+        return Task(
+            config=self.tasks_config["generate_cover_letter_task"],
+            agent=self.cover_letter_writer()
+        )
 
     @crew
     def crew(self) -> Crew:

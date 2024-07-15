@@ -21,12 +21,12 @@ compare_resume_and_job_requirements_task:
 
 future_recommendations_task:
     description: >
-        Based on the analysis of the resume and the job description above, provide recommendations on how the candidate can improve their resume to better match the job requirements. You can recommend specific areas for improvement and suggest ways to highlight key skills and experience or any certifications that the candidate can obtain to enhance their resume.
+        Compare the candidate's resume from {resume_path} and the job description from {job_description_path}, provide recommendations on how the candidate can improve their resume to better match the job requirements. You can recommend specific areas for improvement and suggest ways to highlight key skills and experience or any certifications that the candidate can obtain to enhance their resume.
     expected_output: >
         Specific recommendations on how the candidate can enhance their resume to better align with the job requirements. Provide guidance on areas for improvement and suggestions for highlighting key skills and experience. Recommend any certifications or training programs that the candidate can pursue to enhance their qualifications with link attached.
 
 generate_cover_letter_task:
     description: >
-        Based on the analysis of the candidate's resume and the job requirements, craft a compelling cover letter that highlights the candidate's skills and experience and demonstrates their fit for the job. The cover letter should be tailored to the specific job requirements and showcase the candidate's qualifications.
+        Compare the candidate's resume from {resume_path} and the job description from {job_description_path}, craft a compelling cover letter that highlights the candidate's skills and experience and demonstrates their fit for the job. The cover letter should be tailored to the specific job requirements and showcase the candidate's qualifications.
     expected_output: >
         A well-crafted cover letter that highlights the candidate's skills and experience, demonstrates their fit for the job, and aligns with the job requirements. The cover letter should be tailored to the specific job role and showcase the candidate's qualifications.
