@@ -57,6 +57,22 @@ class JobsHuntingCrew:
         )
 
     @task
+    def google_job_requirements(self) -> Task:
+        return Task(
+            config=self.tasks_config["google_job_requirements_task"],
+            agent=self.professional_headhunter(),
+            tools=[self.file_reading_tool,self.search_tool]
+        )
+
+    @task
+    def interview_preparation(self) -> Task:
+        return Task(
+            config=self.tasks_config["interview_preparation_task"],
+            agent=self.personal_career_coach(),
+            tools=[self.search_tool]
+        )
+
+    @task
     def compare_resume_and_job_requirements(self) -> Task:
         return Task(
             config=self.tasks_config["compare_resume_and_job_requirements_task"],
@@ -64,21 +80,21 @@ class JobsHuntingCrew:
             tools=[self.search_tool, self.file_reading_tool, get_pdf_content]
         )
 
-    @task
-    def future_recommendations(self) -> Task:
-        return Task(
-            config=self.tasks_config["future_recommendations_task"],
-            agent=self.personal_career_coach(),
-            tools=[self.search_tool,self.file_reading_tool,get_pdf_content]
+    # @task
+    # def future_recommendations(self) -> Task:
+    #     return Task(
+    #         config=self.tasks_config["future_recommendations_task"],
+    #         agent=self.personal_career_coach(),
+    #         tools=[self.search_tool,self.file_reading_tool,get_pdf_content]
+    #
+    #     )
 
-        )
-
-    @task
-    def generate_cover_letter(self) -> Task:
-        return Task(
-            config=self.tasks_config["generate_cover_letter_task"],
-            agent=self.cover_letter_writer()
-        )
+    # @task
+    # def generate_cover_letter(self) -> Task:
+    #     return Task(
+    #         config=self.tasks_config["generate_cover_letter_task"],
+    #         agent=self.cover_letter_writer()
+    #     )
 
     @crew
     def crew(self) -> Crew:
