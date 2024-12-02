@@ -89,12 +89,13 @@ class JobsHuntingCrew:
     #
     #     )
 
-    # @task
-    # def generate_cover_letter(self) -> Task:
-    #     return Task(
-    #         config=self.tasks_config["generate_cover_letter_task"],
-    #         agent=self.cover_letter_writer()
-    #     )
+    @task
+    def generate_cover_letter(self) -> Task:
+        return Task(
+            config=self.tasks_config["generate_cover_letter_task"],
+            agent=self.cover_letter_writer(),
+        tools = [self.file_reading_tool, self.search_tool]
+        )
 
     @crew
     def crew(self) -> Crew:

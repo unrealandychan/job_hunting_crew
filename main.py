@@ -15,7 +15,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser()
 
     arguments = [
-        ("--resume_path", {"type": str, "default": "input/resume.pdf",
+        ("--resume_path", {"type": str, "default": "input/resume_eddie.pdf",
                            "help": "input file path to the Resume"}),
         ("--job_description_path", {"type": str, "default": "input/jd.txt",
                                   "help": "input file path to the Job Description"}),
